@@ -4,9 +4,7 @@ use std::u32;
 
 fn main() {
     let file = BufReader::new(File::open("content/input.txt").expect("Cannot open input.txt"));
-
     let all_values = input_vec(file);
-
     let sum: u32 = all_values.iter().sum();
     eprintln!("Sum: {:?}", sum);
 }
@@ -23,14 +21,12 @@ fn input_vec(file: BufReader<File>) -> Vec<u32> {
                     let number_vec = (number_vec.first().unwrap(), number_vec.last().unwrap());
                     let format_vec = format!("{:?}{:?}", number_vec.0, number_vec.1);
                     let number_vec = format_vec.parse::<u32>().unwrap();
-                    println!("format_vec: {:?}", number_vec);
                     all_values.push(number_vec);
                 }
                 _ => {
                     if let Some(&value) = number_vec.first() {
                         let format_vec = format!("{:?}{:?}", value, number_vec.first().unwrap());
                         let number_vec = format_vec.parse::<u32>().unwrap();
-                        println!("format_vec: {:?}", number_vec);
                         all_values.push(number_vec);
                     }
                 }
