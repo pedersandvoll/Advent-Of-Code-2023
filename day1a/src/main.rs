@@ -3,8 +3,10 @@ use std::io::{BufRead, BufReader};
 use std::u32;
 
 fn main() {
-    let file = BufReader::new(File::open("content/input.txt").expect("Cannot open input.txt"));
+    let file =
+        BufReader::new(File::open("content/exampleInput.txt").expect("Cannot open input.txt"));
     let all_values = input_vec(file);
+    println!("All values: {:?}", all_values);
     let sum: u32 = all_values.iter().sum();
     eprintln!("Sum: {:?}", sum);
 }
